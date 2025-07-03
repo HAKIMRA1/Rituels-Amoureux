@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1/12 – Rituel d'ouverture | Édition Grand Luxe</title>
+    <meta name="description" content="Rituel amoureux numéroté - Collection privée">
+    
+    <!-- Préchargement des assets critiques -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&family=Playfair+Display:wght@400;500&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&family=Playfair+Display:wght@400;500&display=swap">
+    
+    <style>
+        :root {
+            --ivoire: #F5F0E6;
+            --noir: #1A1A1A;
+            --or: #C5A86D;
+            --or-clair: #E8D9B5;
+            --ombre-luxe: rgba(26, 26, 26, 0.15);
+            --texture-papier: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="5" stitchTiles="stitch"/><feColorMatrix type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.05 0"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.3"/></svg>');
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: var(--ivoire);
+            color: var(--noir);
+            line-height: 1.8;
+            letter-spacing: 0.03em;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            background-image: 
+                var(--texture-papier),
+                linear-gradient(to bottom, #F5F0E6, #FFFFFF);
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23C5A86D" d="M12 2L4 12l8 10 8-10z"/></svg>'), auto;
+            overflow-x: hidden;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes goldenGlow {
+            0%, 100% { box-shadow: 0 0 0 rgba(197, 168, 109, 0); }
+            50% { box-shadow: 0 0 15px rgba(197, 168, 109, 0.3); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        
+        /* Structure principale */
+        .rituel-container {
+            width: 100%;
+            max-width: 720px;
+            padding: 5rem 2.5rem;
+            margin: 2rem 0;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 1.2s ease-out forwards;
+            animation-delay: 0.3s;
+            will-change: transform, opacity;
+        }
+        
+        .rituel-container::before {
+            content: "";
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border: 1px solid var(--or);
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: -1;
+            transition: all 0.8s ease;
+        }
+        
+        .rituel-container:hover::before {
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            opacity: 0.2;
+        }
+        
+        /* En-tête */
+        .header-rituel {
+            text-align: center;
+            margin-bottom: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .numero {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--or);
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+        
+        .numero::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--or), transparent);
+            animation: shimmer 3s infinite linear;
+        }
+        
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            font-size: 2.8rem;
+            color: var(--noir);
+            margin: 0 0 2rem 0;
+            line-height: 1.3;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding-bottom: 1.5rem;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--or), transparent);
+        }
+        
+        /* Contenu */
+        .preambule {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--noir);
+            margin: 4rem 0;
+            padding: 0 2rem;
+            border-left: 2px solid var(--or);
+            position: relative;
+            animation: fadeIn 1.5s ease-out forwards;
+            animation-delay: 0.5s;
+            opacity: 0;
+        }
+        
+        .preambule::after {
+            content: "❧";
+            position: absolute;
+            bottom: -1.8rem;
+            right: 0.5rem;
+            color: var(--or);
+            font-size: 1.8rem;
+            opacity: 0.6;
+        }
+        
+        /* Sections */
+        .section {
+            margin: 4rem 0;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+            animation-delay: calc(var(--order) * 0.2s);
+            will-change: transform, opacity;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            font-size: 1.4rem;
+            color: var(--noir);
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.5s ease;
+        }
+        
+        .section-title::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 60%;
+            background: linear-gradient(to bottom, var(--or), var(--or-clair));
+            border-radius: 3px;
+            transition: all 0.5s ease;
+        }
+        
+        .section:hover .section-title {
+            letter-spacing: 1.2px;
+        }
+        
+        .section:hover .section-title::before {
+            height: 80%;
+            background: linear-gradient(to bottom, var(--or-clair), var(--or));
+        }
+        
+        .icon {
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            color: var(--or);
+            width: 30px;
+            text-align: center;
+            transition: all 0.5s ease;
+            display: inline-flex;
+            justify-content: center;
+        }
+        
+        .section:hover .icon {
+            transform: scale(1.2);
+            animation: goldenGlow 2s infinite;
+        }
+        
+        .instructions {
+            padding-left: 3rem;
+        }
+        
+        .instructions p {
+            margin-bottom: 1.8rem;
+            position: relative;
+            padding-left: 2.5rem;
+            transition: all 0.4s ease;
+        }
+        
+        .instructions p:hover {
+            transform: translateX(8px);
+        }
+        
+        .instructions p::before {
+            content: "✧";
+            color: var(--or);
+            position: absolute;
+            left: 0;
+            font-size: 1.3rem;
+            line-height: 0;
+            top: 1rem;
+            transition: all 0.4s ease;
+        }
+        
+        .instructions p:hover::before {
+            transform: rotate(45deg);
+            color: var(--or-clair);
+        }
+        
+        /* Séparateurs */
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--or), transparent);
+            margin: 4rem 15%;
+            border: none;
+            opacity: 0.3;
+            position: relative;
+        }
+        
+        .divider::after {
+            content: "✧✧✧";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--ivoire);
+            padding: 0 1.5rem;
+            color: var(--or);
+            font-size: 0.9rem;
+            letter-spacing: 8px;
+        }
+        
+        /* Pied de page */
+        .cloture {
+            text-align: center;
+            font-style: italic;
+            margin-top: 5rem;
+            color: var(--noir);
+            position: relative;
+            font-size: 1.1rem;
+            padding: 2rem 0;
+            font-family: 'Cormorant Garamond', serif;
+            animation: fadeIn 1.5s ease-out forwards;
+            animation-delay: 1.2s;
+            opacity: 0;
+        }
+        
+        .cloture::before,
+        .cloture::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--or), transparent);
+        }
+        
+        .cloture::before {
+            top: 0;
+        }
+        
+        .cloture::after {
+            bottom: 0;
+        }
+        
+        /* Signature */
+        .signature {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 3rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            color: var(--or);
+            opacity: 0.7;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        /* Éléments interactifs */
+        .watermark {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--or);
+            opacity: 0.2;
+            font-size: 0.8rem;
+            pointer-events: none;
+            z-index: 100;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .rituel-container {
+                padding: 3rem 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .preambule {
+                padding: 0 1.5rem;
+                font-size: 1.1rem;
+            }
+            
+            .instructions {
+                padding-left: 2rem;
+            }
+            
+            .instructions p {
+                padding-left: 2rem;
+            }
+        }
+        
+        @media print {
+            body {
+                background: white !important;
+                padding: 1cm;
+                font-size: 12pt;
+            }
+            
+            .rituel-container::before {
+                display: none;
+            }
+            
+            .divider {
+                -webkit-print-color-adjust: exact;
+            }
+            
+            @page {
+                size: A4;
+                margin: 2cm;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="watermark">Édition Grand Luxe</div>
+    
+    <div class="rituel-container">
+        <div class="header-rituel">
+            <div class="numero">Édition Numérotée • 1/12</div>
+            <h1>À lire l'un pour l'autre.<br>Doucement. Un passage chacun.</h1>
+        </div>
+        
+        <div class="preambule">
+            Ce n'est pas encore le début. C'est un seuil. Un instant pour poser vos valises intérieures… Et vous déposer, ensemble, dans une autre présence. Rien ne presse. Rien n'est à réussir. Ce moment est un écrin. Il marque l'entrée dans votre Renaissance Amoureuse.
+        </div>
+        
+        <div class="section" style="--order: 1;">
+            <div class="section-title">
+                <div class="icon">✧</div>
+                Préparer le lieu
+            </div>
+            <div class="instructions">
+                <p>Ce soir, ne faites rien d'autre. Éteignez les écrans. Baissez la lumière. Allumez une bougie.</p>
+                <p>Préparez une boisson douce, un thé chaud, ou un verre de vin.</p>
+                <p>Choisissez un fond musical lent… ou le silence.</p>
+                <p>Puis installez-vous, face à face. Comme si le monde entier s'éloignait doucement.</p>
+            </div>
+        </div>
+        
+        <hr class="divider">
+        
+        <div class="section" style="--order: 2;">
+            <div class="section-title">
+                <div class="icon">✧</div>
+                Respiration à deux
+            </div>
+            <div class="instructions">
+                <p>Fermez les yeux. Rapprochez vos genoux. Respirez ensemble, en silence… Pendant deux minutes.</p>
+                <p>Rien à dire. Juste respirer… côte à côte.</p>
+                <p>Puis, doucement, ouvrez les yeux. Et laissez le regard de l'autre durer.</p>
+            </div>
+        </div>
+        
+        <hr class="divider">
+        
+        <div class="section" style="--order: 3;">
+            <div class="section-title">
+                <div class="icon">✧</div>
+                Promesse intime
+            </div>
+            <div class="instructions">
+                <p>Prenez chacun une feuille. Écrivez une promesse simple et sincère.</p>
+                <p>Une phrase qui commence par : « Pendant ce voyage, je choisis… »</p>
+                <p>Ensuite, lisez-la à l'autre. Sans vous justifier. Juste l'offrir.</p>
+                <p>Puis posez vos feuilles dans un lieu à part. Vous les relirez plus tard.</p>
+            </div>
+        </div>
+        
+        <hr class="divider">
+        
+        <div class="section" style="--order: 4;">
+            <div class="section-title">
+                <div class="icon">✧</div>
+                L'objet témoin
+            </div>
+            <div class="instructions">
+                <p>Choisissez un objet symbolique : Une pierre, une photo, un bijou, un galet.</p>
+                <p>Quelque chose qui vous parle.</p>
+                <p>Il sera le témoin silencieux de votre parcours. Posez-le dans un endroit visible.</p>
+                <p>Touchez-le chaque jour. Il est là pour vous rappeler que vous avez choisi ce lien.</p>
+            </div>
+        </div>
+        
+        <hr class="divider">
+        
+        <div class="section" style="--order: 5;">
+            <div class="section-title">
+                <div class="icon">✧</div>
+                Clôture
+            </div>
+            <div class="instructions">
+                <p>Fermez ce moment sans mot. Par un geste lent. Une main posée. Un baiser silencieux. Ou simplement un regard.</p>
+            </div>
+        </div>
+        
+        <div class="cloture">
+            Demain, vous commencerez votre premier rituel quotidien.<br>
+            Il n'y a rien à anticiper.<br>
+            Seulement à revenir ici,<br>
+            et vous laisser guider.
+        </div>
+        
+        <div class="signature">
+            Collection Privée • N° <span id="edition-number">0001</span>
+        </div>
+    </div>
+
+    <!-- Scripts optimisés -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Numéro d'édition aléatoire
+            const num = Math.floor(Math.random() * 500) + 1;
+            document.getElementById('edition-number').textContent = num.toString().padStart(4, '0');
+            
+            // Initialisation des sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                section.style.setProperty('--order', index);
+            });
+            
+            // Scintillement aléatoire des icônes
+            setInterval(() => {
+                const icons = document.querySelectorAll('.icon');
+                const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+                
+                randomIcon.style.animation = 'goldenGlow 1.8s ease-in-out';
+                setTimeout(() => {
+                    randomIcon.style.animation = '';
+                }, 1800);
+            }, 4000);
+            
+            // Effet de profondeur au scroll
+            window.addEventListener('scroll', () => {
+                const container = document.querySelector('.rituel-container');
+                const scrollY = window.scrollY;
+                container.style.transform = `translateY(${scrollY * 0.1}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
